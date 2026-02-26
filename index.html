@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadixoKart</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #89b646;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background: #f9fafb;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            background: #070707;
+            color: white;
+            border-radius: 5px;
+        }
+
+        nav button:hover {
+            background: #7998ee;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .card button {
+            padding: 8px;
+            width: 100%;
+            border: none;
+            background: #717874;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #669377;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>RadixoKart</h1>
+        <p>From Bricks to Basket – One Marketplace</p>
+    </header>
+
+    <nav>
+        <button onclick="showCategory('bricks')">Bricks</button>
+        <button onclick="showCategory('grocery')">Grocery</button>
+    </nav>
+
+    <div class="container">
+        <div class="products" id="productList"></div>
+    </div>
+
+    <footer>
+       yawarabass46@gmail.com © 2026 RadixoKart | All Rights reserved privacy policy
+    </footer>
+
+    <script>
+
+        const products = [
+            // Bricks
+            {
+                name: "RRR Bricks",
+                perbrick: "8,10",
+                price: "₹5500 / 1000 pcs",
+                category: "bricks",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSajE0bw-RdoTCJjV76xwQb6zgkYxgAW1YvaQ&s"
+            },
+            {
+                name: "HHH Bricks",
+                price: "₹6000 / 1000 pcs",
+                category: "bricks",
+                image: "https://content.jdmagicbox.com/comp/budgam/u4/9999p1951.1951.240103013301.u5u4/catalogue/b11-brick-kiln-budgam-brick-manufacturers-j27l4rx3tb.jpg"
+            },
+
+            // Grocery
+            {
+                name: "Basmati Rice (25kg)",
+                price: "₹1200",
+                category: "grocery",
+                image: "https://images.unsplash.com/photo-1586201375761-83865001e31c"
+            },
+            {
+                name: "Cooking Oil (5L)",
+                price: "₹750",
+                category: "grocery",
+                image: "https://images.unsplash.com/photo-1615486362489-8c33d2e92e89"
+            }
+
+        ];
+
+        function showCategory(category) {
+            const productList = document.getElementById("productList");
+            productList.innerHTML = "";
+
+            const filtered = products.filter(p => p.category === category);
+
+            filtered.forEach(product => {
+                productList.innerHTML += `
+            <div class="card">
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>${product.price}</p>
+                <button onclick="orderNow('${product.name}')">Order Now</button>
+            </div>
+        `;
+            });
+        }
+
+        function orderNow(productName) {
+            alert("Order placed for: " + productName);
+        }
+
+        // Default load
+        showCategory("bricks");
+
+    </script>
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RadixoKart</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="loadProducts('bricks')">
+
+    <header>
+        <h2>RadixoKart</h2>
+        <div>
+            <a href="cart.html">Cart</a>
+            <a href="login.html">Login</a>
+            <a href="dashboard.html">Seller</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <button onclick="loadProducts('bricks')">Bricks</button>
+        <button onclick="loadProducts('grocery')">Grocery</button>
+        <div class="products" id="productList"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+ register 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register or login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Register</h2>
+        0r             <h2>login</h2>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="register()">Register</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+ (Seller Panel)
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Add Product</h2>
+        <input type="text" id="pname" placeholder="Product Name">
+        <input type="number" id="pprice" placeholder="Price">
+        <select id="pcategory">
+            <option value="bricks">Bricks</option>
+            <option value="grocery">Grocery</option>
+        </select>
+        <button onclick="addProduct()">Add Product</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+cart
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="loadCart()">
+
+    <div class="container">
+        <h2>Your Cart</h2>
+        <div id="cartList"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RadixoKart</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🛒 Welcome to RadixoKart</h1>
+        <p>Your Online Grocery & Bricks Marketplace</p>
+    </header>
+
+    <section class="products">
+
+        <div class="card">
+            <h2>Bricks</h2>
+            <p>High quality construction bricks.</p>
+            <button onclick="addToCart('Bricks')">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <h2>Rice</h2>
+            <p>Fresh grocery rice 1kg.</p>
+            <button onclick="addToCart('Rice')">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <h2>Milk</h2>
+            <p>Pure dairy milk.</p>
+            <button onclick="addToCart('Milk')">Add to Cart</button>
+        </div>
+
+    </section>
+
+    <h3 id="cartMessage"></h3>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
